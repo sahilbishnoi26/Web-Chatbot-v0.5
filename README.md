@@ -8,11 +8,6 @@
 * Overcoming knowledge-cutoff limitations, the chatbot delivers answers based on the latest internet content.
 
 
-### The link in the response of the model to the query in the previous image
-<div align="center">
-  <img src="images/result.png" alt="Result">
-</div>
-
 ## Project Schema
 <div align="center">
   <img src="images/Web_Search.png" alt="Schema">

@@ -10,7 +10,7 @@ This tool enables users to pose questions requiring real-time web searches. By l
 
 ## Streamlit User Interface
 <div align="center">
-  <img src="images/ui.png" alt="UI">
+  <img src="images/ui1.png" alt="UI">
 </div>
 
 ## Project Schema

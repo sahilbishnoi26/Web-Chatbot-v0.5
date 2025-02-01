@@ -1,71 +1,55 @@
-# Web-Summarizer-Chatbot-v0.5
+# Function calling and addressing the LLM knowledge cut-off with real-time web search using GPT models
 
-A chatbot built with the OpenAI GPT model in the Chainlit user interface, leveraging GPT agents, function calling, and Retrieval-Augmented Generation (RAG) to enhance conversational capabilities.
+**WebGPT** is a powerful tool enabling users to pose questions that require internet searches. Leveraging GPT models:
+* It identifies and executes the most relevant given Python functions in response to user queries. 
+* The second GPT model generates responses by combining user queries with content retrieved from the web search engine. 
+* The user-friendly interface is built using Streamlit
+* The web search supports diverse searches such as text, news, PDFs, images, videos, maps, and instant responses. 
+* Overcoming knowledge-cutoff limitations, the chatbot delivers answers based on the latest internet content.
 
-## Features
-
-### **1. Normal ChatGPT Interaction**
-Engage in natural conversations as with a regular ChatGPT application, ensuring seamless communication.
-
-### **2. Chat with Websites using RAG**
-Utilize the **RAG** technique by providing a website link. The chatbot processes the website's content, enabling in-depth discussions and detailed queries.
-
-### **3. Website Summarization**
-Request a comprehensive summary of an entire website in a single interaction, streamlining information retrieval.
-
-### **4. Web Search with DocDocGo Integration**
-Leverage the chatbot’s connection to the **DocDocGo** search engine for live web searches. Enter a query, and the chatbot retrieves relevant links and information.
-
-## Chainlit User Interface
+## Streamlit User Interface
 <div align="center">
-  <img src="images/WebRAGQueryUI.png" alt="UI">
+  <img src="images/ui.png" alt="UI">
 </div>
 
-## Example Queries and Logs
-
-### **Tomlinson Website Example**
+### The link in the response of the model to the query in the previous image
 <div align="center">
-  <img src="images/website.png" alt="website">
-</div>
-
-### **Function Caller Log for First Query**
-<div align="center">
-  <img src="images/first_query_log.png" alt="first_query_log">
-</div>
-
-### **Function Caller Log for Second Query**
-<div align="center">
-  <img src="images/second_query_log.png" alt="second_query_log">
+  <img src="images/result.png" alt="Result">
 </div>
 
 ## Project Schema
 <div align="center">
-  <img src="images/WebRAGQuery-Schema.png" alt="Schema">
+  <img src="images/Web_Search.png" alt="Schema">
 </div>
 
 ## Running the Project
 
-The project requires setting up the environment and installing dependencies. This can be done using one of the following methods:
+To get the project up and running, you'll need to set up your environment and install the necessary dependencies. You can do this in two ways:
 
-### **Option 1: Using the Parent Directory Instructions**
-Activate the Python environment and install dependencies:
-
+### Option 1: Using the Parent Directory Instructions
+Activate your environment and run:
 ```
 pip install -r requirements.txt
 ```
 
-### **1. Configuration and Execution**
-- Navigate to the `configs` folder and update the `app_config.yml` file if necessary.
-- Create a `.env` file in the project folder and add the GPT API credentials.
+### Option 2: Installing Dependencies Individually
+If you prefer to install the dependencies individually, run the following command:
 
-For **OpenAI**:
+```
+pip install streamlit==1.29.0 streamlit-chat==0.1.1 duckduckgo-search==4.1.1 openai==0.28.0 pydantic==2.5.1
+```
 
+1. **Configuration and Execution**
+
+- Go to the `configs` folder and update the `app_config.yml` file if needed.
+- In your project folder, create a `.env` file and add your GPT API credentials.
+
+If you're using OpenAI directly:
 ```
 OPENAI_API_KEY=
 ```
 
-For **Azure OpenAI**:
-
+If you're using Azure OpenAI:
 ```
 OPENAI_API_TYPE=
 OPENAI_API_VERSION=
@@ -75,35 +59,23 @@ gpt_deployment_name=
 embed_deployment_name=
 ```
 
-### **2. Activate the Environment**
-Ensure the virtual environment is active before running the application.
+2. **Activate Your Environment.**
+3. **Ensure you are in the WebGPT directory**
+4. **Run the Application:**
 
-### **3. Run the Application**
-Start the chatbot using the following command:
+In Terminal:
 
 ```
-chainlit run src/app.py -h
+streamlit run src\webgpt_app.py
 ```
 
-## Automatic Directory Management
+**YouTube video:** [Link](https://www.youtube.com/watch?v=55bztmEzAYU&t=295s)
 
-The project automatically creates essential directories within the `WebRAGQuery` directory:
+**Slides:** [Link](https://github.com/Farzad-R/LLM-Zero-to-Hundred/blob/master/presentation/presentation.pdf)
 
-1. **`memory`** – Stores essential session data, maintaining a separate CSV file for each session to preserve chat history.
-2. **`vectordb`** – Stores **chromaDB** folders, each corresponding to a requested URL. At the start of each session, the folder is regenerated, ensuring a clean slate while purging outdated vectorDBs from previous sessions.
+Extra read:
+- [GPT model](https://platform.openai.com/docs/models/overview) 
+- [duckduckgo-search](https://pypi.org/project/duckduckgo-search/)
+- [streamlit](https://docs.streamlit.io/)
 
-## Sample Prompts
 
-Use the following prompts to trigger different chatbot functionalities:
-
-1. **Prepare a website for RAG:**  
-   `Prepare this link for q and a <your desired link>`
-
-2. **Summarize an entire website:**  
-   `Summarize this website for me <your desired link>`
-
-3. **Search the web for specific content (e.g., videos):**  
-   `I am looking for videos that explain how to train a large language model`
-
-4. **Debug Python code using internal knowledge:**  
-   `Debug the following code <your code and the error>`

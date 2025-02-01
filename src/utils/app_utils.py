@@ -94,9 +94,7 @@ class Apputils:
         Returns:
             The response object from the OpenAI ChatCompletion API call.
         """
-        client = openai.OpenAI()  # Ensure OpenAI client is initialized
-
-        response = client.chat.completions.create(
+        response = openai.ChatCompletion.create(
             engine=gpt_model,
             messages=messages,
             functions=function_json_list,
@@ -118,9 +116,7 @@ class Apputils:
         Returns:
             The response object from the OpenAI ChatCompletion API call.
         """
-        client = openai.OpenAI()  # Ensure OpenAI client is initialized
-
-        response = client.chat.completions.create(
+        response = openai.ChatCompletion.create(
             engine=gpt_model,
             messages=messages,
             temperature=temperature
